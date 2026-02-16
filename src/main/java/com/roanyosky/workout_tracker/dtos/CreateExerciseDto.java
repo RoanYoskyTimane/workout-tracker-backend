@@ -3,7 +3,6 @@ package com.roanyosky.workout_tracker.dtos;
 import com.roanyosky.workout_tracker.entities.enums.CategoryType;
 import com.roanyosky.workout_tracker.entities.enums.MuscleGroupType;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
