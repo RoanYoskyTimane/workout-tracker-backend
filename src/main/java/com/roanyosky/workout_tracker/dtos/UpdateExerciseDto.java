@@ -13,6 +13,10 @@ public class UpdateExerciseDto {
     @Size(min = 2, max=100, message = "Name must be between 5 and 100 characters")
     private String name;
 
+    @NotNull
+    @Size(min = 2, max=100, message = "Description must be between 5 and 100 characters")
+    private String description;
+
     @NotNull(message = "Category is required")
     private CategoryType category;
 
