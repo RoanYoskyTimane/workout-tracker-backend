@@ -29,12 +29,10 @@ public class Exercise {
     @Column(name = "description")
     private String description;
 
-    @Size(max = 50)
     @Column(name = "category", length = 50)
     @Enumerated(EnumType.STRING)
     private CategoryType category;
 
-    @Size(max = 50)
     @Column(name = "muscle_group", length = 50)
     @Enumerated(EnumType.STRING)
     private MuscleGroupType muscleGroup;
