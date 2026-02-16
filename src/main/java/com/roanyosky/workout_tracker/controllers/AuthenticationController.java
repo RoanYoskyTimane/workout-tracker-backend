@@ -6,7 +6,6 @@ import com.roanyosky.workout_tracker.dtos.LoginDto;
 import com.roanyosky.workout_tracker.services.AuthenticationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/auth")
-public class UserController {
+public class AuthenticationController {
     AuthenticationService authenticationService;
 
     @PostMapping("/register")
