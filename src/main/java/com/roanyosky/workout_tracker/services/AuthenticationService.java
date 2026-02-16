@@ -21,6 +21,7 @@ public class AuthenticationService {
 
     public AuthenticationResponseDto register(CreateUserDto createUserDto){
         User user = userMapper.toEntity(createUserDto);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 
         String jwtToken = jwtService.generateToken(user);
