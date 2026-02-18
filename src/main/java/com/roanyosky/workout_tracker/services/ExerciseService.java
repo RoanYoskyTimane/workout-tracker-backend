@@ -9,11 +9,18 @@ import com.roanyosky.workout_tracker.repositories.ExerciseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ExerciseService {
     private final ExerciseRepository exerciseRepository;
     private final ExerciseMapper exerciseMapper;
+
+    public List<ExerciseDto> allExercises(){
+        return exerciseRepository.findAll().stream().map(exerciseMapper::toDto).toList();
+    }
+
 
     public ExerciseDto createExercise(CreateExerciseDto createExerciseDto){
         Exercise exercise = exerciseMapper.toEntity(createExerciseDto);
