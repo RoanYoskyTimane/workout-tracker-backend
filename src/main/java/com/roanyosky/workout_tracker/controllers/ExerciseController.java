@@ -9,11 +9,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/exercises")
 public class ExerciseController {
     private final ExerciseService exerciseService;
+
+    @GetMapping
+    public List<ExerciseDto> getAllExercises(){
+        return exerciseService.allExercises();
+    }
+
 
     @PostMapping
     @PreAuthorize("isAuthenticated()")
