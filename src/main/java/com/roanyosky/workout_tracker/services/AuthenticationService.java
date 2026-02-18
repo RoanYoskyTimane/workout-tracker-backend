@@ -8,6 +8,8 @@ import com.roanyosky.workout_tracker.entities.User;
 import com.roanyosky.workout_tracker.mappers.UserMapper;
 import com.roanyosky.workout_tracker.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ public class AuthenticationService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
 
     public AuthenticationResponseDto register(CreateUserDto createUserDto){
@@ -33,6 +36,12 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponseDto authenticate(LoginDto loginDto){
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginDto.getEmail(),
+                        loginDto.getPassword()
+                )
+        );
         User user = userRepository.findByEmail(loginDto.getEmail());
 
         String jwtToken = jwtService.generateToken(user);
