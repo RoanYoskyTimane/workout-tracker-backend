@@ -17,12 +17,7 @@ public class ExerciseService {
 
     public ExerciseDto createExercise(CreateExerciseDto createExerciseDto){
         Exercise exercise = exerciseMapper.toEntity(createExerciseDto);
-        System.out.println("Name: "+createExerciseDto.getName());
-        System.out.println("Category: "+createExerciseDto.getCategory());
-        System.out.println("Muscle type: "+createExerciseDto.getMuscleGroup());
-        System.out.println("Name from entity: "+exercise.getName());
-        System.out.println("Category from entity: "+exercise.getCategory());
-        System.out.println("Muscle type from entity: "+exercise.getMuscleGroup());
+
         exerciseRepository.save(exercise);
 
         return exerciseMapper.toDto(exercise);
